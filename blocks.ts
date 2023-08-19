@@ -1,53 +1,125 @@
-class FourBlock {
-    static generateBlock(): number[][] {
+interface Block {
+    getShape(): number[][];
+    getColor(): string;
+}
+
+class iBlock implements Block {
+    getShape(): number[][] {
         return [
+            [0, 0, 0, 0],
             [1, 1, 1, 1],
+            [0, 0, 0, 0],
             [0, 0, 0, 0]
         ];
     }
-}
 
-class ThreeBlock {
-    static generateBlock(): number[][] {
-        const blockHash: number[] = [];
-        const preBlock: number[] = [];
-
-        // Generate block hash
-        for (let i = 0; i < 4; i++) {
-            blockHash.push(Math.floor(Math.random() * 6));
-        }
-
-        // Generate preBlock based on block hash
-        for (let i = 0; i < 6; i++) {
-            preBlock.push(blockHash.includes(i) ? 1 : 0);
-        }
-
-        // Split preBlock into two arrays
-        return [preBlock.slice(0, 3), preBlock.slice(3)];
+    getColor(): string {
+        return "rgb(0, 255, 255)";  // Cyan
     }
 }
 
-class TwoBlock {
-    static generateBlock(): number[][] {
+class oBlock implements Block {
+    getShape(): number[][] {
         return [
-            [1, 1],
-            [1, 1]
+            [0, 0, 0, 0],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 0, 0, 0]
         ];
+    }
+
+    getColor(): string {
+        return "rgb(255, 255, 0)";  // Yellow
+    }
+}
+
+class tBlock implements Block {
+    getShape(): number[][] {
+        return [
+            [0, 0, 0, 0],
+            [0, 1, 1, 1],
+            [0, 0, 1, 0],
+            [0, 0, 0, 0]
+        ];
+    }
+
+    getColor(): string {
+        return "rgb(128, 0, 128)";  // Purple
+    }
+}
+class sBlock implements Block {
+    getShape(): number[][] {
+        return [
+            [0, 0, 0, 0],
+            [0, 0, 1, 1],
+            [0, 1, 1, 0],
+            [0, 0, 0, 0]
+        ];
+    }
+
+    getColor(): string {
+        return "rgb(0, 255, 0)";  // Green
+    }
+}
+
+class zBlock implements Block {
+    getShape(): number[][] {
+        return [
+            [0, 0, 0, 0],
+            [0, 1, 1, 0],
+            [0, 0, 1, 1],
+            [0, 0, 0, 0]
+        ];
+    }
+
+    getColor(): string {
+        return "rgb(255, 0, 0)";  // Red
+    }
+}
+
+class jBlock implements Block {
+    getShape(): number[][] {
+        return [
+            [0, 0, 0, 0],
+            [0, 1, 1, 1],
+            [0, 1, 0, 0],
+            [0, 0, 0, 0]
+        ];
+    }
+
+    getColor(): string {
+        return "rgb(0, 0, 255)";  // Blue
+    }
+}
+
+class lBlock implements Block {
+    getShape(): number[][] {
+        return [
+            [0, 0, 0, 0],
+            [0, 1, 1, 1],
+            [0, 0, 0, 1],
+            [0, 0, 0, 0]
+        ];
+    }
+
+    getColor(): string {
+        return "rgb(255, 165, 0)";  // Orange
     }
 }
 
 class BlockFactory {
-    static dispenseBlock(blockType: string): number[][] {
-        switch (blockType) {
-            case 'four':
-                return FourBlock.generateBlock();
-            case 'three':
-                return ThreeBlock.generateBlock();
-            case 'two':
-                return TwoBlock.generateBlock();
-            default:
-                throw new Error(`Unsupported block type: ${blockType}`);
+    static createRandomBlock(): Block {
+        const random = Math.floor(Math.random() * 7);
+
+        switch (random) {
+            case 0: return new iBlock();
+            case 1: return new oBlock();
+            case 2: return new tBlock();
+            case 3: return new sBlock();
+            case 4: return new zBlock();
+            case 5: return new jBlock();
+            case 6: return new lBlock();
+            default: throw new Error("Invalid tetromino type");
         }
     }
 }
-
