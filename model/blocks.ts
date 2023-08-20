@@ -1,4 +1,6 @@
 interface Block {
+    private xCoords: number[];
+    private yCoords: number[];
     getShape(): number[][];
     getColor(): string;
 }
