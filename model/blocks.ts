@@ -1,111 +1,63 @@
-interface Block {
-    private xCoords: number[];
-    private yCoords: number[];
-    getShape(): number[][];
-    getColor(): string;
-}
+abstract class Block {
+    protected xCoords: number[];
+    protected yCoords: number[];
+    protected color: string;
 
-class iBlock implements Block {
-    getShape(): number[][] {
-        return [
-            [0, 0, 0, 0],
-            [1, 1, 1, 1],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ];
+    constructor(xCoords: number[], yCoords: number[], color: string) {
+        this.xCoords = xCoords;
+        this.yCoords = yCoords;
+        this.color = color;
     }
-
     getColor(): string {
-        return "rgb(0, 255, 255)";  // Cyan
+        return this.color;
     }
-}
-
-class oBlock implements Block {
-    getShape(): number[][] {
-        return [
-            [0, 0, 0, 0],
-            [0, 1, 1, 0],
-            [0, 1, 1, 0],
-            [0, 0, 0, 0]
-        ];
+    getXCoords(): number[] {
+        return this.xCoords;
     }
-
-    getColor(): string {
-        return "rgb(255, 255, 0)";  // Yellow
+    getYCoords(): number[] {
+        return this.yCoords;
     }
 }
 
-class tBlock implements Block {
-    getShape(): number[][] {
-        return [
-            [0, 0, 0, 0],
-            [0, 1, 1, 1],
-            [0, 0, 1, 0],
-            [0, 0, 0, 0]
-        ];
-    }
-
-    getColor(): string {
-        return "rgb(128, 0, 128)";  // Purple
-    }
-}
-class sBlock implements Block {
-    getShape(): number[][] {
-        return [
-            [0, 0, 0, 0],
-            [0, 0, 1, 1],
-            [0, 1, 1, 0],
-            [0, 0, 0, 0]
-        ];
-    }
-
-    getColor(): string {
-        return "rgb(0, 255, 0)";  // Green
+class iBlock extends Block {
+    constructor() {
+        super([4,5,6,7], [0,0,0,0], "rgb(0, 255, 255)") // Cyan
     }
 }
 
-class zBlock implements Block {
-    getShape(): number[][] {
-        return [
-            [0, 0, 0, 0],
-            [0, 1, 1, 0],
-            [0, 0, 1, 1],
-            [0, 0, 0, 0]
-        ];
-    }
-
-    getColor(): string {
-        return "rgb(255, 0, 0)";  // Red
+class oBlock extends Block {
+    constructor() { 
+    super([5,6,5,6], [0,0,1,1], "rgb(255, 255, 0)") // Yellow
     }
 }
 
-class jBlock implements Block {
-    getShape(): number[][] {
-        return [
-            [0, 0, 0, 0],
-            [0, 1, 1, 1],
-            [0, 1, 0, 0],
-            [0, 0, 0, 0]
-        ];
-    }
-
-    getColor(): string {
-        return "rgb(0, 0, 255)";  // Blue
+class tBlock extends Block {
+    constructor() {
+        super([5,6,7,6], [0,0,0,1], "rgb(128, 0, 128)");  // Purple
     }
 }
 
-class lBlock implements Block {
-    getShape(): number[][] {
-        return [
-            [0, 0, 0, 0],
-            [0, 1, 1, 1],
-            [0, 0, 0, 1],
-            [0, 0, 0, 0]
-        ];
+class sBlock extends Block {
+    constructor() {
+        super([6,7,5,6], [0,0,1,1], "rgb(0, 255, 0)");  // Green
     }
+}
 
-    getColor(): string {
-        return "rgb(255, 165, 0)";  // Orange
+class zBlock extends Block {
+    constructor() {
+        super([5,6,6,7], [0,0,1,1], "rgb(255, 0, 0)");  // Red
+    }
+}
+
+class jBlock extends Block {
+    constructor() {
+        super([5,5,6,7], [0,1,1,1], "rgb(0, 0, 255)");  // Blue
+    }
+}
+
+class lBlock extends Block {
+    constructor() {
+        super([7,5,6,7], [0,1,1,1], "rgb(255, 165, 0)");  // Orange
     }
 }
 
@@ -125,3 +77,4 @@ class BlockFactory {
         }
     }
 }
+
