@@ -1,7 +1,7 @@
 class GameBoard {
     readonly columns: number;
     readonly rows: number;
-    board: number[][];
+    board: number[][] = [];
 
     constructor(rows = 20, columns = 10) {
         this.columns = columns;
@@ -10,8 +10,10 @@ class GameBoard {
     }
 
     private initializeBoard(): void {
-        this.board = Array.from({ length: this.columns }, () =>
-            Array(this.rows).fill(0)
+        this.board = Array.from({ length: this.rows }, () =>
+            Array(this.columns).fill(0)
         );
     }
 }
+
+export {GameBoard};

@@ -1,12 +1,8 @@
+import { GameBoard } from './model/board';
+import { BlockFactory } from './model/blocks';
+import { Physics } from './model/physics'
+import { Rules } from './model/rules'
 
-
-class Tetris{
-    private board: Board;
-    private rules: Rules;
-    private blockFactory: BlockFactory;
-    private controller: Controller;
-    constructor(board: Board, rules: Rules, blockFactory: BlockFactory, controller: Controller) {
-
-    }
-        
-}
+var gameBoard = new GameBoard
+var test_block = BlockFactory.createRandomBlock()
+console.log(test_block.getXCoords())

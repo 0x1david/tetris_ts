@@ -26,3 +26,5 @@ class Physics {
         }
     }
 }
+
+export { Physics };

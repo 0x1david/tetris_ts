@@ -26,6 +26,7 @@ class Rules {
     }
     
 }
+export { Rules };
 // Clearing lines when the whole row is 1 (after collision)
 // Game over (When blocks reach the top)
 // Score counter

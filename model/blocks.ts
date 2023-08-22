@@ -77,4 +77,4 @@ class BlockFactory {
         }
     }
 }
-
+export { BlockFactory };
