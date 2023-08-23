@@ -5,4 +5,6 @@ import { Rules } from './model/rules'
 
 var gameBoard = new GameBoard
 var test_block = BlockFactory.createRandomBlock()
-console.log(test_block.getXCoords())
+
+gameBoard.
+
