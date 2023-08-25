@@ -9,7 +9,7 @@ class GameBoard {
         this.initializeBoard();
     }
 
-    private initializeBoard(): void {
+    public initializeBoard(): void {
         this._boardState = Array.from({ length: this.rows }, () =>
             Array(this.columns).fill(0)
         );

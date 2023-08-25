@@ -1,39 +1,46 @@
-class Physics {
-    private collision: boolean;
+import { Block } from './Blocks'; 
+import { GameBoard } from './Board'
 
-    public positionCalculation(board: Board, block: Block): boolean {
-        this.collision = block.xcoords.some(xcoord =>
-            board.boardState[xcoord].some(ycoord =>
-                block.ycoords.includes(ycoord)
+enum Direction {
+	Left = 1,
+	Right = 2
+}
+class Physics {
+    private static collision: boolean;
+
+    static checkCollision(board: GameBoard, block: Block): boolean {
+        this.collision = block.xCoords.some(xCoord =>
+            board.boardState[xCoord].some(yCoord =>
+                block.yCoords.includes(yCoord)
             )
         );
         return this.collision;
     }
 
-    public falling(block: Block): Block {
-        block.ycoords.forEach((coordinate, index, coords) => {
+    static falling(block: Block): Block {
+        block.yCoords.forEach((coordinate, index, coords) => {
             coords[index] = coordinate - 1;
         });
         return block;
     }
 
     // 1 = Left, 2 = Right
-    public sideways(board: Board, block: Block, direction: number): Block {
-        if (direction === 1 && !(block.xcoords.some(xcoord => xcoord === 0))) {
-            block.xcoords.forEach((coordinate, index, coords) => {
+    static sideways(board: GameBoard, block: Block, direction: Direction): Block {
+        if (direction === Direction.Left && !(block.xCoords.some(xcoord => xcoord === 0))) {
+            block.xCoords.forEach((coordinate, index, coords) => {
                 coords[index] = coordinate - 1;
             });
-        } else if (direction === 2 && !(block.xcoords.some(xcoord => xcoord === board.columns - 1))) {
-            block.xcoords.forEach((coordinate, index, coords) => {
-                coords[index] = coordinate + 1;
+        } else if (direction === Direction.Right && !(block.xCoords.some(xCoord => xCoord === board.columns - 1))) {
+            block.xCoords.forEach((coordinate, index, Coords) => {
+                Coords[index] = coordinate + 1;
             });
         }
         return block;
     }
 
-    public turnAround(board: Board, block: Block): Block {
-		
-    }
+    // public turnAround(board: Board, block: Block): Block {
+	
+    // }
 }
-export { Physics };
+export { Physics, Direction };
 
