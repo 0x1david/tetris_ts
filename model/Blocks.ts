@@ -22,10 +22,10 @@ abstract class Block {
         return this._yCoords;
     }
     set xCoords(newX: number[]) {
-	    this._xCoords = newX;
+	this._xCoords = newX;
     }
     set yCoords(newY: number[]) {
-	    this._yCoords = newY;
+	this._yCoords = newY;
     }
     get xKernel(): number[] {
         return this._xKernel;
@@ -100,4 +100,4 @@ class BlockFactory {
     }
 }
 
-export { BlockFactory };
+export { Block, iBlock, oBlock, tBlock, sBlock, zBlock, jBlock, lBlock, BlockFactory };
