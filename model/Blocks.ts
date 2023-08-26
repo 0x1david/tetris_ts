@@ -1,27 +1,29 @@
 abstract class Block {
     protected _xCoords: number[];
     protected _yCoords: number[];
-    protected _color: string;
-    protected _xKernel: number[];
-    protected _yKernel: number[];
+    protected _rotationAngle: number;
+    readonly _color: string;
+    readonly _xKernel: number[];
+    readonly _yKernel: number[];
 
-    constructor(xCoords: number[], yCoords: number[], color: string, xkernel: number[], ykernel: number[]) {
+    constructor(xCoords: number[], yCoords: number[], color: string, xkernel: number[], ykernel: number[], rotationangle: number = 0) {
         this._xCoords = xCoords;
         this._yCoords = yCoords;
         this._color = color;
 	this._xKernel = xkernel;
 	this._yKernel = ykernel;
+	this._rotationAngle = rotationangle;
     }
     get Color(): string {
         return this._color;
     }
     get xCoords(): number[] {
-        return this._xCoords;
+        return this.deepCopy(this._xCoords);
     }
     get yCoords(): number[] {
-        return this._yCoords;
+        return this.deepCopy(this._yCoords);
     }
-    set xCoords(newX: number[]) {
+    set xCoords(newX: number[]) { 
 	this._xCoords = newX;
     }
     set yCoords(newY: number[]) {
@@ -30,15 +32,18 @@ abstract class Block {
     get xKernel(): number[] {
         return this._xKernel;
     }
-    set xKernel(newKernel: number[]) {
-        this._xKernel = newKernel;
-    }
     get yKernel(): number[] {
         return this._yKernel;
     }
-    set yKernel(newKernel: number[]) {
-        this._yKernel = newKernel;
+    get rotationAngle(): number {
+	    return this._rotationAngle;
+    } 
+    set rotationAngle(newAngle) {
+	    this.rotationAngle = newAngle;
     }
+    private deepCopy<T>(property: T[]): T[] {
+  return [...property];
+}
 }
 
 class iBlock extends Block {

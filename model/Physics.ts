@@ -18,9 +18,11 @@ class Physics {
     }
 
     static falling(block: Block): Block {
-        block.yCoords.forEach((coordinate, index, coords) => {
-            coords[index] = coordinate - 1;
+	let tempCoords = block.yCoords;
+        tempCoords.forEach((coordinate, index, coords) => {
+            coords[index] = coordinate + 1;
         });
+	block.yCoords = tempCoords;
         return block;
     }
 

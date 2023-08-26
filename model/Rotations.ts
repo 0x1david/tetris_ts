@@ -1,17 +1,18 @@
+import { Block } from "./Blocks"
 class Rotation {
     public rotate(block: Block): Block {
         const kernels = [
-            { x:  block._xKernel,  y:  block._yKernel },
-            { x: -block._yKernel,  y:  block._xKernel },
-            { x: -block._xKernel,  y: -block._yKernel },
-            { x:  block._yKernel,  y: -block._xKernel }
+            { x:  block.xKernel,  y:  block.yKernel },
+            { x: -block.yKernel,  y:  block.xKernel },
+            { x: -block.xKernel,  y: -block.yKernel },
+            { x:  block.yKernel,  y: -block.xKernel }
         ];
 
         const kernel = kernels[block.angle];
-        block.xcoords = block.xcoords.map((x, i) => x + kernel.x[i]);
-        block.ycoords = block.ycoords.map((y, i) => y + kernel.y[i]);
+        block.xCoords = block.xCoords.map((x, i) => x + kernel.x[i]);
+        block.yCoords = block.yCoords.map((y, i) => y + kernel.y[i]);
 
-        block.angle = (block.angle + 1) % 4;
+        block.rotationAngle = (block.rotationAngle + 1) % 4;
         return block;
     }
 }
