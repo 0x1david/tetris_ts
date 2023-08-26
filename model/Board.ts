@@ -9,19 +9,22 @@ class GameBoard {
         this.initializeBoard();
     }
 
-    private initializeBoard(): void {
+    public initializeBoard(): void {
         this._boardState = Array.from({ length: this.rows }, () =>
             Array(this.columns).fill(0)
         );
 
     }
     get boardState(): number[][] {
-	    return this._boardState;
+	    return this.deepCopy(this._boardState);
     }
 
     set boardState(newState: number[][]) {
 	    this._boardState = newState;
     }
+    private deepCopy<T>(state: T[][]): T[][] {
+	    return state.map(state => [...state]);
+}
 }
 
 export {GameBoard};
