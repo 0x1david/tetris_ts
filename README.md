@@ -2,7 +2,7 @@
 
 ** This is my first typescript project **
 ## THIS PROJECT IS NOW DEPRECATED
-** I was creating this app in order to learn typescript basics, practice vim motions and practice OOP a bit, I now feel like I've reached my goal To the extent I can in this project and I feel like finishing this project would no longer further my skills as affectively as I'd like and thus I've decided to move on without fininshing it **
+I was creating this app in order to learn typescript basics, practice vim motions and practice OOP a bit, I now feel like I've reached my goal To the extent I can in this project and I feel like finishing this project would no longer further my skills as affectively as I'd like and thus I've decided to move on without fininshing it **
 
 ## TAKEAWAYS
 - I realised how amazing static typing can be, and honestly I'm  already starting to feel like I prefer it to dynamic typing.
